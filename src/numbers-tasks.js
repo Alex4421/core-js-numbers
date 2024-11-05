@@ -261,23 +261,17 @@ function getCube(num) {
 function getFibonacciNumber(index) {
   if (index === 0) return 0;
   if (index === 1) return 1;
-
   let a = 0;
   let b = 1;
   let i = 2;
-
   while (i <= index) {
     const fib = a + b;
     a = b;
     b = fib;
     i += 1;
   }
-
   return b;
 }
-
-
-
 /**
  * Returns the sum of all numbers from 1 to n.
  *
@@ -330,15 +324,17 @@ function isPowerOfTwo(num) {
   if (num <= 0) {
     return false;
   }
-  while (num > 1) {
-    if (num % 2 !== 0) {
+
+  let currentNum = num;
+
+  while (currentNum > 1) {
+    if (currentNum % 2 !== 0) {
       return false;
     }
-    num /= 2;
+    currentNum /= 2;
   }
   return true;
 }
-
 /**
  * Returns the sine of a number.
  *
