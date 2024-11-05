@@ -261,12 +261,21 @@ function getCube(num) {
 function getFibonacciNumber(index) {
   if (index === 0) return 0;
   if (index === 1) return 1;
-  const fib = [0, 1];
-  for (let i = 2; i <= index; i++) {
-    fib[i] = fib[i - 1] + fib[i - 2];
+
+  let a = 0;
+  let b = 1;
+  let i = 2;
+
+  while (i <= index) {
+    const fib = a + b;
+    a = b;
+    b = fib;
+    i += 1;
   }
-  return fib[index];
+
+  return b;
 }
+
 
 
 /**
