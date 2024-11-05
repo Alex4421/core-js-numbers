@@ -242,7 +242,7 @@ function toNumber(value, def) {
  *   0  => 0
  */
 function getCube(num) {
-  return num * num * num;
+  return num ** 3;
 }
 
 /**
@@ -420,7 +420,7 @@ function toPrecision(number, precision) {
  * Number(-5)    => -5
  */
 function getNumberValue(number) {
-  return +number;
+  return number.valueOf();
 }
 
 /**
@@ -468,8 +468,7 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  const result = parseFloat(str);
-  return Number.isNaN(result) ? NaN : result;
+  return Number.parseFloat(str);
 }
 
 /**
@@ -487,11 +486,7 @@ function getFloatOnString(str) {
  * '10', 8              => 8
  */
 function getIntegerOnString(str, base) {
-  if (base < 2 || base > 36) {
-    return NaN;
-  }
-  const result = parseInt(str, base);
-  return Number.isNaN(result) ? NaN : result;
+  return Number.parseInt(str, base);
 }
 
 /**
