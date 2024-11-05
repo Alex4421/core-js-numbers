@@ -265,14 +265,17 @@ function getFibonacciNumber(index) {
   if (index === 1) {
     return 1;
   }
+
   let a = 0;
   let b = 1;
   let fib = 0;
-  for (let i = 2; i <= index; i++) {
+
+  for (let i = 2; i <= index; i = i + 1) { // Changed i++ to i = i + 1
     fib = a + b;
     a = b;
     b = fib;
   }
+
   return fib;
 }
 
