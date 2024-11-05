@@ -265,16 +265,15 @@ function getFibonacciNumber(index) {
   if (index === 1) {
     return 1;
   }
-  let a = 0;
-  let b = 1;
-  for (let i = 2; i <= index; i++) {
+  let a = 0; // F(0)
+  let b = 1; // F(1)
+  for (let i = 2; i <= index; i = i + 1) {
     const fib = a + b;
     a = b;
     b = fib;
   }
   return b;
 }
-
 
 /**
  * Returns the sum of all numbers from 1 to n.
@@ -322,19 +321,8 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  if (num <= 0) {
-    return false;
-  }
-
-  while (num > 1) {
-    if (num % 2 !== 0) {
-      return false;
-    }
-    num = num / 2;
-  }
-  return true;
+  return num > 0 && (num & (num - 1)) === 0;
 }
-
 /**
  * Returns the sine of a number.
  *
