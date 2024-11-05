@@ -270,12 +270,11 @@ function getFibonacciNumber(index) {
   let b = 1;
   let fib = 0;
 
-  for (let i = 2; i <= index; i = i + 1) { // Changed i++ to i = i + 1
+  for (let i = 2; i <= index; i = i + 1) {
     fib = a + b;
     a = b;
     b = fib;
   }
-
   return fib;
 }
 
@@ -291,7 +290,7 @@ function getFibonacciNumber(index) {
  *   1  => 1
  */
 function getSumToN(n) {
-  (n * (n + 1)) / 2;
+ return (n * (n + 1)) / 2;
 }
 
 /**
@@ -306,12 +305,11 @@ function getSumToN(n) {
  *   5   => 5  // 5
  */
 function getSumOfDigits(num) {
-  const sumNum = num.toString().split('');
-  let sum = 0;
-  for (const digit of sumNum) {
-    sum += Number(digit);
-  }
-  return sum;
+  return num
+    .toString()
+    .split('')
+    .map(Number)
+    .reduce((sum, digit) => sum + digit, 0);
 }
 
 /**
@@ -326,7 +324,17 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  return num > 0 && (num & (num - 1)) === 0;
+  if (num <= 0) {
+    return false;
+  }
+
+  while (num > 1) {
+    if (num % 2 !== 0) {
+      return false;
+    }
+    num = num / 2;
+  }
+  return true;
 }
 
 /**
@@ -434,7 +442,7 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  return typeof number === 'number' && !isNaN(number);
+  return typeof number === 'number' && !Number.isNaN(number);
 }
 
 /**
@@ -464,7 +472,7 @@ function isInteger(number) {
  */
 function getFloatOnString(str) {
   const result = parseFloat(str);
-  return isNaN(result) ? NaN : result;
+  return Number.isNaN(result) ? NaN : result;
 }
 
 /**
@@ -482,9 +490,11 @@ function getFloatOnString(str) {
  * '10', 8              => 8
  */
 function getIntegerOnString(str, base) {
-  if (isNaN(result) || base < 2 || base > 36) {
+  if (base < 2 || base > 36) {
     return NaN;
   }
+  const result = parseInt(str, base);
+  return Number.isNaN(result) ? NaN : result;
 }
 
 /**
