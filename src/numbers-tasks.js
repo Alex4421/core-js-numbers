@@ -259,21 +259,15 @@ function getCube(num) {
  *   10 => 55
  */
 function getFibonacciNumber(index) {
-  if (index === 0) {
-    return 0;
+  if (index === 0) return 0;
+  if (index === 1) return 1;
+  const fib = [0, 1];
+  for (let i = 2; i <= index; i++) {
+    fib[i] = fib[i - 1] + fib[i - 2];
   }
-  if (index === 1) {
-    return 1;
-  }
-  let a = 0; // F(0)
-  let b = 1; // F(1)
-  for (let i = 2; i <= index; i = i + 1) {
-    const fib = a + b;
-    a = b;
-    b = fib;
-  }
-  return b;
+  return fib[index];
 }
+
 
 /**
  * Returns the sum of all numbers from 1 to n.
@@ -287,7 +281,10 @@ function getFibonacciNumber(index) {
  *   1  => 1
  */
 function getSumToN(n) {
- return (n * (n + 1)) / 2;
+  if (n <= 0) {
+    return 0;
+  }
+  return n + getSumToN(n - 1);
 }
 
 /**
@@ -321,8 +318,18 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  return num > 0 && (num & (num - 1)) === 0;
+  if (num <= 0) {
+    return false;
+  }
+  while (num > 1) {
+    if (num % 2 !== 0) {
+      return false;
+    }
+    num /= 2;
+  }
+  return true;
 }
+
 /**
  * Returns the sine of a number.
  *
